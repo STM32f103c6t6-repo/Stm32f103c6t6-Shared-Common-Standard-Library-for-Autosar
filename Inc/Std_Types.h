@@ -41,6 +41,10 @@ typedef double						float64;
 /* Boolean */
 typedef uint8 bool;
 
+#ifndef boolean
+#define boolean	(bool)
+#endif
+
 #ifndef TRUE
 #define TRUE	((bool)1u)
 #endif

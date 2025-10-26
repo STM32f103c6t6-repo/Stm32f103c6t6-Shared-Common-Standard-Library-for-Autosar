@@ -39,7 +39,7 @@ typedef uint8_t Std_ReturnType ; /*Return for API */
 #endif
 #ifndef E_NOT_OK
 #define E_NOT_OK	((Std_ReturnType)0x01u) /*Error*/
-
+#endif
 /* ---------------------------------------------------------------------------------------------------------------------
  *  NetworkHandleType
  *  - Detect network channel.
@@ -90,11 +90,11 @@ typedef enum
 	TP_CONFPENDING		/* Wait confirm pre-data. */
 } TpDataStateType;
 
-struct RetryInfoType
+typedef struct
 {
 	TpDataStateType TpDataState;	/* State of pre-Data. */
 	PduLengthType	TxTpDataCnt;	/* Number of bytes remaining to send (when retrying). */
-};
+} RetryInfoType;
 
 /* ---------------------------------------------------------------------------------------------------------------------
  *  NotifResultType
@@ -112,7 +112,8 @@ typedef enum
 	NTFRSLT_E_PROTOCOL,		// Protocol error.
 	NTFRSLT_E_CANCELATION,	// Cancel by request.
 	NTFRSLT_E_NO_BUFFER		// Buffer not enough capacity.
-};
+} NotifResultType;
+
 
 /* ---------------------------------------------------------------------------------------------------------------------
  *  CAN_IDType
@@ -130,10 +131,10 @@ typedef uint32_t CAN_IdType;
 
 static inline CAN_IdType CAN_MAKE_STD_ID(uint16_t stdId)
 {
-	return ((CAN_IdType)(extId & CAN_STD_ID_MASK));
+	return ((CAN_IdType)(stdId & CAN_STD_ID_MASK));
 }
 
-static inline CAN_IdType CAN_MAKE_EXT_ID(uint16_t stdId)
+static inline CAN_IdType CAN_MAKE_EXT_ID(uint16_t extId)
 {
 	return ((CAN_IdType)(extId & CAN_EXT_ID_MASK));
 }
