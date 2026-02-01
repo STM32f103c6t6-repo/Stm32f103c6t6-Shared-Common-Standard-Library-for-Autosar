@@ -25,6 +25,7 @@ extern "C" {
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include "Std_Types.h"
 
 /* ---------------------------------------------------------------------------------------------------------------------
  *  Value function for API
@@ -61,11 +62,11 @@ typedef uint8_t NetworkHandleType;
 typedef uint16_t PduIdType;
 typedef uint16_t PduLengthType;
 
-struct PduInfoType {
+typedef struct {
 	uint8_t*		SduDataPtr;		/* Pointer of payload (Tx or Rx).*/
-	PduLengthType	SduLength;		/* Số byte hợp lệ trong payload.*/
+	PduLengthType	SduLength;		/* Number of bit in payload.*/
 	uint8_t*		MetaDataPtr;	/* Metadata. */
-};
+} PduInfoType;
 
 /* ---------------------------------------------------------------------------------------------------------------------
  *  Buffer request result for Transport Protocol (TP)
@@ -112,7 +113,7 @@ typedef enum
 	NTFRSLT_E_PROTOCOL,		// Protocol error.
 	NTFRSLT_E_CANCELATION,	// Cancel by request.
 	NTFRSLT_E_NO_BUFFER		// Buffer not enough capacity.
-} NotifResultType;
+} NotifyResultType;
 
 
 /* ---------------------------------------------------------------------------------------------------------------------
@@ -139,7 +140,7 @@ static inline CAN_IdType CAN_MAKE_EXT_ID(uint16_t extId)
 	return ((CAN_IdType)(extId & CAN_EXT_ID_MASK));
 }
 
-static inline bool CAN_ID_IS_EXT(CAN_IdType id)
+static inline boolean CAN_ID_IS_EXT(CAN_IdType id)
 {
 	return((id & CAN_ID_FLAG_IDE) != 0u);
 }

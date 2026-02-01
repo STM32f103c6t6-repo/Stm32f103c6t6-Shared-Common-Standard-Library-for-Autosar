@@ -39,17 +39,13 @@ typedef float						float32;
 typedef double						float64;
 
 /* Boolean */
-typedef uint8 bool;
-
-#ifndef boolean
-#define boolean	(bool)
-#endif
+typedef uint8 boolean;
 
 #ifndef TRUE
-#define TRUE	((bool)1u)
+#define TRUE	((boolean)1u)
 #endif
 #ifndef FALSE
-#define FALSE	((bool)0u)
+#define FALSE	((boolean)0u)
 #endif
 
 /* Std macros */
@@ -69,6 +65,11 @@ typedef struct {
 	uint8 		sw_patch_version;
 } Std_VersionInfoType;
 
+#ifndef E_OK
+typedef uint8 Std_ReturnType;
+#define E_OK		((Std_ReturnType)0x00u)
+#define E_NOT_OK	((Std_ReturnType)0x01u)
+#endif
 
 #ifdef __cplusplus
 }

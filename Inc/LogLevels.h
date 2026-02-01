@@ -84,13 +84,13 @@ static inline char LOG_LeveChar(LogLevel_t lvl)
 {
 	switch(lvl)
 	{
-		case LOG_ERROR: return "E";
-		case LOG_WARN:	return "W";
-		case LOG_INFO:	return "I";
-		case LOG_DEBUG: return "D";
-		case LOG_TRACE: return "T";
-		case LOG_OFF:
-		default:		return "O";
+		case LOG_ERROR: return 'E';
+		case LOG_WARN:	return 'W';
+		case LOG_INFO:	return 'I';
+		case LOG_DEBUG: return 'D';
+		case LOG_TRACE: return 'T';
+		case LOG_OFF:	return 'O';
+		default:		return 'O';
 	}
 }
 
